@@ -1,0 +1,7 @@
+.idea/**
+.gradle/**
+showcase-common/**
+showcase-spigot/build/**
+showcase-spigot/out/**
+showcase-sponge/build/**
+showcase-sponge/out/**

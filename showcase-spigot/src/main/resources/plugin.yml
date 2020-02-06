@@ -1,0 +1,9 @@
+name: Showcase
+version: 1.0.0
+main: me.randomhashtags.showcase.ShowcaseSpigot
+api-version: 1.13
+authors: [RandomHashTags]
+description: Prove everyone you have obtained the most rate and valuable items on the server. Showcased items cannot be taken back!
+commands:
+  showcase:
+    permission: Showcase.command

@@ -1,0 +1,33 @@
+repositories {
+    maven {
+        name = 'spigotmc-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+    maven {
+        name = 'PlaceholderAPI'
+        url "http://repo.extendedclip.com/content/repositories/placeholderapi"
+    }
+}
+
+dependencies {
+    compile project(':showcase-common')
+    compileOnly 'org.spigotmc:spigot-api:1.15.2-R0.1-SNAPSHOT'
+
+    implementation 'me.clip:placeholderapi:2.10.3'
+}
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        expand 'version': project.version
+    }
+}
+
+shadowJar {
+    dependencies {
+        include(dependency(':showcase-common'))
+    }
+}
