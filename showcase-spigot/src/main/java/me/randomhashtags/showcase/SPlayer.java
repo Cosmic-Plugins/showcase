@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public final class SPlayer implements UVersionable {
-    private static final String PLAYER_DATA_FOLDER = SHOWCASE.getDataFolder() + File.separator + "_Data" + File.separator + "playerData";
+    private static final String PLAYER_DATA_FOLDER = SHOWCASE.getDataFolder() + File.separator + "playerData";
     public static final HashMap<UUID, SPlayer> CACHED_PLAYERS = new HashMap<>();
 
     private boolean isLoaded;
