@@ -54,13 +54,6 @@ public final class SPlayer implements UVersionable {
         return CACHED_PLAYERS.getOrDefault(player, new SPlayer(player));
     }
 
-    public void unload(boolean async) {
-        if(async) {
-            SCHEDULER.runTaskAsynchronously(SHOWCASE, () -> unload());
-        } else {
-            unload();
-        }
-    }
     public void unload() {
         if(isLoaded) {
             try {

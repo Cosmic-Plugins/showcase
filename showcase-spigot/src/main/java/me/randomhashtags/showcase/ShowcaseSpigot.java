@@ -11,6 +11,7 @@ public final class ShowcaseSpigot extends JavaPlugin {
     @Override
     public void onEnable() {
         getPlugin = this;
+        saveSettings();
         getCommand("showcase").setExecutor(ShowcaseAPI.INSTANCE);
         enable();
     }
@@ -20,8 +21,12 @@ public final class ShowcaseSpigot extends JavaPlugin {
         disable();
     }
 
-    public void enable() {
+    private void saveSettings() {
         saveDefaultConfig();
+    }
+
+    public void enable() {
+        saveSettings();
         placeholderapi = Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI");
         ShowcaseAPI.INSTANCE.load();
     }

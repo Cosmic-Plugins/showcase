@@ -35,7 +35,7 @@ public enum ShowcaseAPI implements Listener, CommandExecutor, UVersionable {
     private List<String> lore;
     
     private ItemStack addItemConfirm, addItemCancel, removeItemConfirm, removeItemCancel, expansion;
-    private int addedRows = 0;
+    private int addedRows;
     private UInventory additems, removeitems;
     private String othertitle, selftitle, TCOLOR;
     private List<Integer> itemslots;
