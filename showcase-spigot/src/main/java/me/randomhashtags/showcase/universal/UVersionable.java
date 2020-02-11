@@ -16,7 +16,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.PluginManager;
-import org.bukkit.scheduler.BukkitScheduler;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -24,10 +23,8 @@ import java.util.*;
 
 public interface UVersionable extends Versionable {
     ShowcaseSpigot SHOWCASE = ShowcaseSpigot.getPlugin;
-    FileConfiguration SHOWCASE_CONFIG = SHOWCASE.getConfig();
     Random RANDOM = new Random();
 
-    BukkitScheduler SCHEDULER = Bukkit.getScheduler();
     ConsoleCommandSender CONSOLE = Bukkit.getConsoleSender();
     PluginManager PLUGIN_MANAGER = Bukkit.getPluginManager();
 

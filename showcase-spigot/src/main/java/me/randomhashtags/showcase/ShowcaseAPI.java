@@ -10,6 +10,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -24,12 +25,16 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.io.File;
 import java.util.*;
 
 public enum ShowcaseAPI implements Listener, CommandExecutor, UVersionable {
     INSTANCE;
 
     private boolean isEnabled;
+
+    public YamlConfiguration SHOWCASE_CONFIG;
+
     private ItemStack item;
     private ItemMeta itemMeta;
     private List<String> lore;
@@ -72,13 +77,15 @@ public enum ShowcaseAPI implements Listener, CommandExecutor, UVersionable {
             return;
         }
         isEnabled = true;
-        PLUGIN_MANAGER.registerEvents(this, SHOWCASE);
         final long started = System.currentTimeMillis();
+
+        PLUGIN_MANAGER.registerEvents(this, SHOWCASE);
 
         item = new ItemStack(Material.APPLE);
         itemMeta = item.getItemMeta();
         lore = new ArrayList<>();
 
+        SHOWCASE_CONFIG = YamlConfiguration.loadConfiguration(new File(SHOWCASE.getDataFolder() + File.separator, "config.yml"));
         expansion = createItemStack(SHOWCASE_CONFIG, "items.expansion");
         addedRows = SHOWCASE_CONFIG.getInt("items.expansion.added rows");
 

@@ -51,17 +51,24 @@ public final class SPlayer implements UVersionable {
     }
 
     public static SPlayer get(UUID player) {
-        return CACHED_PLAYERS.getOrDefault(player, new SPlayer(player));
+        return CACHED_PLAYERS.getOrDefault(player, new SPlayer(player).load());
+    }
+
+    public SPlayer load() {
+        if(!isLoaded) {
+            isLoaded = true;
+        }
+        return this;
     }
 
     public void unload() {
         if(isLoaded) {
+            isLoaded = false;
             try {
                 backup();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            isLoaded = false;
             CACHED_PLAYERS.remove(uuid);
         }
     }
@@ -122,7 +129,7 @@ public final class SPlayer implements UVersionable {
                     showcases.put(page, items);
                 }
             } else {
-                final int defaultShowcase = SHOWCASE_CONFIG.getInt("settings.default showcases"), defaultSize = SHOWCASE_CONFIG.getInt("settings.default showcase size");
+                final int defaultShowcase = ShowcaseAPI.INSTANCE.SHOWCASE_CONFIG.getInt("settings.default showcases"), defaultSize = ShowcaseAPI.INSTANCE.SHOWCASE_CONFIG.getInt("settings.default showcase size");
                 if(defaultShowcase > 0) {
                     final ItemStack[] a = new ItemStack[54];
                     for(int i = 1; i <= defaultShowcase; i++) {
